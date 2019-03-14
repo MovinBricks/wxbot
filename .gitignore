@@ -1,4 +1,11 @@
+# npm
 node_modules
+package-lock.json
+
+# source
 download
 *.out
 *.log
+
+# vscode 
+.vscode/
