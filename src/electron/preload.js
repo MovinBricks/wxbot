@@ -1,4 +1,5 @@
-const electronEmitter = require('./preloadIpc');
+require('../ipc/preloadIpc')();
+
 const { clipboard, nativeImage } = require('electron');
 const {
     s, sa, delay, download,
@@ -15,7 +16,6 @@ window.__defineSetter__('onbeforeunload', () => {
 document.addEventListener('DOMContentLoaded', () => {
     // 禁止外层网页滚动 影响使用
     document.body.style.overflow = 'hidden';
-
     detectPage();
 });
 
@@ -69,7 +69,7 @@ async function clickSend(opt) {
     if (opt.text) {
         s('.btn_send').click();
     } else if (opt.image) {
-    // fixme: 超时处理
+        // fixme: 超时处理
         while (true) {
             await delay(300);
             const btn = s('.dialog_ft .btn_primary');
@@ -90,7 +90,7 @@ function pasteMsg(opt) {
 
     clipboard.clear(); // 必须清空
     if (opt.image) {
-    // 不知为啥 linux上 clipboard+nativeimage无效
+        // 不知为啥 linux上 clipboard+nativeimage无效
         try {
             clipboard.writeImage(nativeImage.createFromPath(opt.image));
         } catch (err) {
