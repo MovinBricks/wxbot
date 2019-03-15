@@ -1,4 +1,4 @@
-require('../ipc/preloadIpc')();
+require('../ipc/preloadIpc');
 
 const { clipboard, nativeImage } = require('electron');
 const {

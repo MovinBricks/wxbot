@@ -1,3 +1,4 @@
+require('./ipc/runnerIpc');
 const {
     app, session, ipcMain, BrowserWindow,
 } = require('electron');

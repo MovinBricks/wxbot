@@ -14,10 +14,10 @@ const child = ipc(proc);
 child.on('runner', (k, args) => {
     console[k](`runner:${k}`, ...args);
 });
-child.on('qrcode', (qrcode) => {
-    console.log('qrcode', qrcode);
-    generate(qrcode);
-});
+// child.on('qrcode', (qrcode) => {
+//     console.log('qrcode', qrcode);
+//     generate(qrcode);
+// });
 
 function end() {
     if (proc.connected) proc.disconnect();
